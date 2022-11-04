@@ -3,6 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Dogs = require('../lib/models/DogModel');
+const Cows = require('../lib/models/CowModel');
 
 describe('doggys routes', () => {
   beforeEach(() => {
@@ -28,22 +29,23 @@ describe('doggys routes', () => {
     };
     expect(res.body).toEqual(vincent);
   });
+});
 
-  describe('cows routes', () => {
-    beforeEach(() => {
-      return setup(pool);
+describe('cows routes', () => {
 
-    });
-
-    test('/cows returns list of cows and details',
-      async () => {
-        const res = await request(app).get('/cows');
-        const data = await Cows.getAll();
-        expect(res.body).toEqual(data);
-      });
+  beforeEach(() => {
+    return setup(pool);
   });
+
+  test('/cows returns list of cows and details',
+    async () => {
+      const res = await request(app).get('/cows');
+      const data = await Cows.getAllCows();
+      expect(res.body).toEqual(data);
+    });
 
   afterAll(() => {
     pool.end();
   });
+
 });
