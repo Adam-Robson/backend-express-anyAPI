@@ -16,27 +16,29 @@ describe('cows routes', () => {
       const data = await Cows.getAllCows();
       expect(res.body).toEqual(data);
     });
-});
 
-test('/cows/:id returns cow detail', async () => {
-  const res = await request(app).get('/cows/1');
-  const herb = {
-    id: '1',
-    name: 'Herb',
-    age: 17,
-    type: 'Beefalo',
-    size: 'the Nose',
-    color: 'burgundy',
-    movie: 'Talking Heads (Live): Stop Making Sense',
-    chill: false
-  };
-  expect(res.body).toEqual(herb);
-});
 
-describe('cows routes', () => {
-  beforeEach(() => {
-    return setup(pool);
+  test('/cows/:id returns cow detail', async () => {
+    const res = await request(app).get('/cows/1');
+    const herb = {
+      id: '1',
+      name: 'Herb',
+      age: 17,
+      type: 'Beefalo',
+      size: 'the Nose',
+      color: 'burgundy',
+      movie: 'Talking Heads (Live): Stop Making Sense',
+      chill: false
+    };
+    expect(res.body).toEqual(herb);
   });
+
+  describe('cows routes', () => {
+    beforeEach(() => {
+      return setup(pool);
+    });
+  });
+
 
 
   test('/doggys returns list of dogs and details',
@@ -63,6 +65,5 @@ describe('cows routes', () => {
 
   afterAll(() => {
     pool.end();
-  }
-  );
+  });
 });
