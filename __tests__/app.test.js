@@ -16,53 +16,51 @@ describe('cows routes', () => {
       const data = await Cows.getAllCows();
       expect(res.body).toEqual(data);
     });
-});
 
-test('/cows/:id returns cow detail', async () => {
-  const res = await request(app).get('/cows/1');
-  const herb = {
-    id: '1',
-    name: 'Herb',
-    age: 17,
-    type: 'Beefalo',
-    alias: 'the Nose',
-    color: 'burgundy',
-    movie: 'The Talking Heads (Live): Stop Making Sense',
-    chill: true
-  };
-  expect(res.body).toEqual(herb);
-});
 
-describe('doggys routes', () => {
-
-  beforeEach(() => {
-    return setup(pool);
+  test('/cows/:id returns cow detail', async () => {
+    const res = await request(app).get('/cows/1');
+    const herb = {
+      id: '1',
+      name: 'Herb',
+      age: 17,
+      type: 'Beefalo',
+      alias: 'the Nose',
+      color: 'burgundy',
+      movie: 'The Talking Heads (Live): Stop Making Sense',
+      chill: true
+    };
+    expect(res.body).toEqual(herb);
   });
 
-  test('/doggys returns list of dogs and details',
-    async () => {
-      const res = await request(app).get('/doggys');
-      const data = await Dogs.getAll();
-      expect(res.body).toEqual(data);
+  describe('doggys routes', () => {
+    beforeEach(() => {
+      return setup(pool);
     });
 
-  test('/doggys/:id returns dog detail', async () => {
-    const res = await request(app).get('/doggys/1');
-    const vincent = {
-      id: '1',
-      name: 'Vincent',
-      age: 11,
-      type: 'Afghan Hound',
-      size: 'large',
-      snack: 'cheez-its',
-      song: 'ACDC Ride On',
-      singer: false
-    };
-    expect(res.body).toEqual(vincent);
-  });
+    test('/doggys returns list of dogs and details',
+      async () => {
+        const res = await request(app).get('/doggys');
+        const data = await Dogs.getAll();
+        expect(res.body).toEqual(data);
+      });
+    test('/doggys/:id returns dog detail', async () => {
+      const res = await request(app).get('/doggys/1');
+      const vincent = {
+        id: '1',
+        name: 'Vincent',
+        age: 11,
+        type: 'Afghan Hound',
+        size: 'large',
+        snack: 'cheez-its',
+        song: 'ACDC Ride On',
+        singer: false
+      };
+      expect(res.body).toEqual(vincent);
+    });
 
-  afterAll(() => {
-    pool.end();
+    afterAll(() => {
+      pool.end();
+    });
   });
-  
 });
