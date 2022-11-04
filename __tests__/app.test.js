@@ -13,7 +13,7 @@ describe('cows routes', () => {
   test('/cows returns list of cows and details',
     async () => {
       const res = await request(app).get('/cows');
-      const data = await Cows.getAll();
+      const data = await Cows.getAllCows();
       expect(res.body).toEqual(data);
     });
 });
