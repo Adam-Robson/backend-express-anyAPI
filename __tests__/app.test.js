@@ -3,11 +3,11 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Dogs = require('../lib/models/DogModel');
+const Cows = require('../lib/models/CowModel');
 
 describe('cows routes', () => {
   beforeEach(() => {
     return setup(pool);
-
   });
 
   test('/cows returns list of cows and details',
@@ -16,15 +16,28 @@ describe('cows routes', () => {
       const data = await Cows.getAll();
       expect(res.body).toEqual(data);
     });
-  
 });
 
+test('/cows/:id returns cow detail', async () => {
+  const res = await request(app).get('/cows/1');
+  const herb = {
+    id: '1',
+    name: 'Herb',
+    age: 17,
+    type: 'Beefalo',
+    size: 'the Nose',
+    color: 'burgundy',
+    movie: 'Talking Heads (Live): Stop Making Sense',
+    chill: false
+  };
+  expect(res.body).toEqual(herb);
+});
 
-
-describe('doggys routes', () => {
+describe('cows routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
 
   test('/doggys returns list of dogs and details',
     async () => {
@@ -32,7 +45,6 @@ describe('doggys routes', () => {
       const data = await Dogs.getAll();
       expect(res.body).toEqual(data);
     });
-
   test('/doggys/:id returns dog detail', async () => {
     const res = await request(app).get('/doggys/1');
     const vincent = {
@@ -48,7 +60,6 @@ describe('doggys routes', () => {
     expect(res.body).toEqual(vincent);
   }
   );
-
 
   afterAll(() => {
     pool.end();
