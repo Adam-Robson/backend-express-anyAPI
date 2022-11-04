@@ -25,45 +25,42 @@ describe('cows routes', () => {
       name: 'Herb',
       age: 17,
       type: 'Beefalo',
-      size: 'the Nose',
+      alias: 'the Nose',
       color: 'burgundy',
-      movie: 'Talking Heads (Live): Stop Making Sense',
-      chill: false
+      movie: 'The Talking Heads (Live): Stop Making Sense',
+      chill: true
     };
     expect(res.body).toEqual(herb);
   });
 
-  describe('cows routes', () => {
+  describe('doggys routes', () => {
     beforeEach(() => {
       return setup(pool);
     });
-  });
 
-
-
-  test('/doggys returns list of dogs and details',
-    async () => {
-      const res = await request(app).get('/doggys');
-      const data = await Dogs.getAll();
-      expect(res.body).toEqual(data);
+    test('/doggys returns list of dogs and details',
+      async () => {
+        const res = await request(app).get('/doggys');
+        const data = await Dogs.getAll();
+        expect(res.body).toEqual(data);
+      });
+    test('/doggys/:id returns dog detail', async () => {
+      const res = await request(app).get('/doggys/1');
+      const vincent = {
+        id: '1',
+        name: 'Vincent',
+        age: 11,
+        type: 'Afghan Hound',
+        size: 'large',
+        snack: 'cheez-its',
+        song: 'ACDC Ride On',
+        singer: false
+      };
+      expect(res.body).toEqual(vincent);
     });
-  test('/doggys/:id returns dog detail', async () => {
-    const res = await request(app).get('/doggys/1');
-    const vincent = {
-      id: '1',
-      name: 'Vincent',
-      age: 11,
-      type: 'Afghan Hound',
-      size: 'large',
-      snack: 'cheez-its',
-      song: 'ACDC Ride On',
-      singer: false
-    };
-    expect(res.body).toEqual(vincent);
-  }
-  );
 
-  afterAll(() => {
-    pool.end();
+    afterAll(() => {
+      pool.end();
+    });
   });
 });
