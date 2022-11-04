@@ -4,20 +4,20 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Dogs = require('../lib/models/DogModel');
 
-describe('dogs routes', () => {
+describe('doggys routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('/dogs returns list of dogs and details',
+
+  test('/doggys returns list of dogs and details',
     async () => {
-      const res = await request(app).get('/dogs');
+      const res = await request(app).get('/doggys');
       const data = await Dogs.getAll();
       expect(res.body).toEqual(data);
-    }
-  );
+    });
 
-  it('/dogs/:id returns dog detail', async () => {
-    const res = await request(app).get('/dogs/1');
+  test('/doggys/:id returns dog detail', async () => {
+    const res = await request(app).get('/doggys/1');
     const vincent = {
       id: '1',
       name: 'Vincent',
@@ -29,9 +29,12 @@ describe('dogs routes', () => {
       singer: false
     };
     expect(res.body).toEqual(vincent);
-  });
+  }
+  );
+
 
   afterAll(() => {
     pool.end();
-  });
+  }
+  );
 });
