@@ -18,3 +18,4 @@ VALUES
 ('Hannah', 6, 'Shiba Inu', 'medium', 'potato chips', 'Gloria Estefan Hoy', true),
 ('Judith', 9, 'Maltipoo', 'small', 'anchovies', 'Billie Holiday All Of Me', true),
 ('Janet', 3, 'Havanese', 'small', 'snickers', 'Talking Heads This Must Be the Place', false)
+

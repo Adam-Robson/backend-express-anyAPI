@@ -4,6 +4,22 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Dogs = require('../lib/models/DogModel');
 
+describe('cows routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+
+  });
+
+  test('/cows returns list of cows and details',
+    async () => {
+      const res = await request(app).get('/cows');
+      const data = await Cows.getAll();
+      expect(res.body).toEqual(data);
+    });
+});
+
+
+
 describe('doggys routes', () => {
   beforeEach(() => {
     return setup(pool);
