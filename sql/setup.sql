@@ -1,17 +1,17 @@
-DROP TABLE IF EXISTS (doggys);
+DROP TABLE IF EXISTS doggys;
 
-CREATE TABLE (doggys) (
+CREATE TABLE doggys (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
   name VARCHAR NOT NULL,
-  age VARCHAR NOT NULL,
-  type INT NOT NULL,
+  age INT NOT NULL,
+  type VARCHAR NOT NULL,
   size VARCHAR NOT NULL,
-  snack INT NOT NULL,
+  snack VARCHAR NOT NULL,
   song VARCHAR NOT NULL,
   singer BOOLEAN NOT NULL
 );
 
-INSERT INTO (doggys) (name, age, type, size, snack, song, singer)
+INSERT INTO doggys (name, age, type, size, snack, song, singer)
 VALUES
 ('Vincent', 11, 'Afghan Hound', 'large', 'cheez-its', 'ACDC Ride On', false),
 ('Walden', 4, 'American Pit Bull Terrier', 'medium', 'profiteroles', 'Television Marquee Moon', true),
