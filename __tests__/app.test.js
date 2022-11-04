@@ -16,6 +16,7 @@ describe('cows routes', () => {
       const data = await Cows.getAll();
       expect(res.body).toEqual(data);
     });
+  
 });
 
 
