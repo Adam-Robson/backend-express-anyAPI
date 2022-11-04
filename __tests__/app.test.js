@@ -29,6 +29,20 @@ describe('doggys routes', () => {
     expect(res.body).toEqual(vincent);
   });
 
+  describe('cows routes', () => {
+    beforeEach(() => {
+      return setup(pool);
+
+    });
+
+    test('/cows returns list of cows and details',
+      async () => {
+        const res = await request(app).get('/cows');
+        const data = await Cows.getAll();
+        expect(res.body).toEqual(data);
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
