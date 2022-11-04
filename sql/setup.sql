@@ -1,20 +1,20 @@
--- Use this file to define your SQL tables
--- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS (_table_name_);
+DROP TABLE IF EXISTS (doggys);
 
-CREATE TABLE (_table_name_) (
+CREATE TABLE (doggys) (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
-  _col2name_ VARCHAR NOT NULL,
-  _col3name_ VARCHAR NOT NULL,
-  _col4name_ INT NOT NULL,
-  _col5name_ VARCHAR NOT NULL,
-  _col6name_ INT NOT NULL,
-  _col7name_ BOOLEAN NOT NULL
+  name VARCHAR NOT NULL,
+  age VARCHAR NOT NULL,
+  type INT NOT NULL,
+  size VARCHAR NOT NULL,
+  snack INT NOT NULL,
+  song VARCHAR NOT NULL,
+  singer BOOLEAN NOT NULL
 );
 
-INSERT INTO (_table_name_) (_column2name_, _3name_, _4name_, _5name_, _6name_, _7name_)
+INSERT INTO (doggys) (name, age, type, size, snack, song, singer)
 VALUES
-(_row2col2val_, _row1col3val_, _row1col4val_, _row1col5val_, _row1col6val_, _row1col7val_),
-(_row2col2val_, _row2col3val_, _row2col4val_, _row2col5val_, _row2col6val_, _row2col7val_),
-
-// end
+('Vincent', 11, 'Afghan Hound', 'large', 'cheez-its', 'ACDC Ride On', false),
+('Walden', 4, 'American Pit Bull Terrier', 'medium', 'profiteroles', 'Television Marquee Moon', true),
+('Hannah', 6, 'Shiba Inu', 'medium', 'potato chips', 'Gloria Estefan Hoy', true),
+('Judith', 9, 'Maltipoo', 'small', 'anchovies', 'Billie Holiday All Of Me', true),
+('Janet', 3, 'Havanese', 'small', 'snickers', 'Talking Heads This Must Be the Place', false)
