@@ -27,6 +27,7 @@
     "@types/pg": "^8.6.5",
     "eslint": "^8.17.0",
     "jest": "^28.1.0",
+    "jest-runner-vscode": "^3.0.1",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
     "supertest": "^6.2.3"
